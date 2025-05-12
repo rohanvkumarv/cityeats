@@ -1,0 +1,204 @@
+// This is your Prisma schema file
+// Learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum UserType {
+  ADMIN
+  VENDOR
+  CUSTOMER
+}
+
+enum VendorStatus {
+  PENDING
+  APPROVED
+  REJECTED
+}
+
+enum BookingStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+}
+
+enum TableType {
+  ROOFTOP
+  INDOOR
+}
+
+model User {
+  id        String    @id @default(cuid())
+  email     String    @unique
+  password  String
+  name      String
+  phone     String?
+  type      UserType  @default(CUSTOMER)
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  // Relationships
+  vendor    Vendor?
+  bookings  Booking[]
+  cart      Cart?
+  wishlist  Wishlist?
+}
+
+model Vendor {
+  id        String       @id @default(cuid())
+  userId    String       @unique
+  storeName String
+  status    VendorStatus @default(PENDING)
+  createdAt DateTime     @default(now())
+  updatedAt DateTime     @updatedAt
+
+  // Relationships
+  user        User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  restaurant  Restaurant?
+}
+
+model Restaurant {
+  id               String   @id @default(cuid())
+  vendorId         String   @unique
+  name             String
+  description      String?
+  address          String
+  city             String
+  cuisine          String[]
+  openingHours     String
+  closingHours     String
+  hasAC            Boolean  @default(false)
+  hasRooftop       Boolean  @default(false)
+  hasWifi          Boolean  @default(false)
+  hasParking       Boolean  @default(false)
+  isOpen           Boolean  @default(true)
+  rating           Float?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+
+  // Relationships
+  vendor           Vendor           @relation(fields: [vendorId], references: [id], onDelete: Cascade)
+  menuItems        MenuItem[]
+  images           RestaurantImage[]
+  tables           Table[]
+  bookings         Booking[]
+}
+
+model RestaurantImage {
+  id           String     @id @default(cuid())
+  restaurantId String
+  imageUrl     String
+  isMain       Boolean    @default(false)
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  // Relationships
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+}
+
+model MenuItem {
+  id           String     @id @default(cuid())
+  restaurantId String
+  name         String
+  description  String?
+  price        Float
+  category     String
+  isAvailable  Boolean    @default(true)
+  imageUrl     String?
+  createdAt    DateTime   @default(now())
+  updatedAt    DateTime   @updatedAt
+
+  // Relationships
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  orderItems   OrderItem[]
+}
+
+model Table {
+  id           String    @id @default(cuid())
+  restaurantId String
+  tableNumber  Int
+  capacity     Int
+  type         TableType
+  hasAC        Boolean   @default(false)
+  isAvailable  Boolean   @default(true)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  // Relationships
+  restaurant   Restaurant @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  bookings     Booking[]
+}
+
+model Booking {
+  id           String        @id @default(cuid())
+  userId       String
+  restaurantId String
+  tableId      String
+  date         DateTime
+  time         String
+  people       Int
+  status       BookingStatus @default(PENDING)
+  specialRequests String?
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+
+  // Relationships
+  user         User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+  restaurant   Restaurant  @relation(fields: [restaurantId], references: [id], onDelete: Cascade)
+  table        Table       @relation(fields: [tableId], references: [id])
+  order        Order?
+}
+
+model Order {
+  id           String    @id @default(cuid())
+  bookingId    String    @unique
+  totalAmount  Float
+  isPaid       Boolean   @default(false)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  // Relationships
+  booking      Booking     @relation(fields: [bookingId], references: [id], onDelete: Cascade)
+  orderItems   OrderItem[]
+}
+
+model OrderItem {
+  id           String    @id @default(cuid())
+  orderId      String
+  menuItemId   String
+  quantity     Int
+  price        Float
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+
+  // Relationships
+  order        Order     @relation(fields: [orderId], references: [id], onDelete: Cascade)
+  menuItem     MenuItem  @relation(fields: [menuItemId], references: [id])
+}
+
+model Cart {
+  id        String    @id @default(cuid())
+  userId    String    @unique
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  // Relationships
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Wishlist {
+  id        String    @id @default(cuid())
+  userId    String    @unique
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  // Relationships
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
