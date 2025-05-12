@@ -259,12 +259,10 @@ export default function Home() {
       {/* Hero Section with Premium Styling */}
       <section className="relative h-[600px] flex items-center">
         <div className="absolute inset-0 z-0">
-          <Image
-            src="/images/hero-bg.jpg"
+          <img
+            src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
             alt="Restaurant atmosphere"
-            fill
-            priority
-            style={{ objectFit: 'cover' }}
+            style={{ objectFit: 'cover', width: '100%', height: '100%' }}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-amber-900/80 to-black/70"></div>
           <div 
