@@ -1,6 +1,6 @@
 
 import { NextResponse } from 'next/server';
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 import { cookies } from 'next/headers';
 import prisma from '@/lib/prisma';
 
