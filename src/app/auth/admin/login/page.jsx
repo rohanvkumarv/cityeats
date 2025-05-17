@@ -37,7 +37,7 @@ export default function AdminLoginPage() {
             <div className="md:w-1/2 relative hidden md:block">
               <div className="absolute inset-0 bg-gray-800 opacity-80"></div>
               <Image
-                src="/images/admin-login-bg.jpg"
+                src="/images/restaurants/thali.jpg"
                 alt="Admin dashboard"
                 fill
                 style={{ objectFit: 'cover' }}

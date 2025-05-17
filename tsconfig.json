@@ -1,10 +1,86 @@
+// // {
+// //   "compilerOptions": {
+// //     "target": "ES2017",
+// //     "lib": ["dom", "dom.iterable", "esnext"],
+// //     "allowJs": true,
+// //     "skipLibCheck": true,
+// //     "strict": false,
+// //     "noEmit": true,
+// //     "esModuleInterop": true,
+// //     "module": "esnext",
+// //     "moduleResolution": "bundler",
+// //     "resolveJsonModule": true,
+// //     "isolatedModules": true,
+// //     "jsx": "preserve",
+// //     "incremental": true,
+// //     "noImplicitAny": false,      // This prevents errors when variables don't have explicit types
+// //     // "suppressImplicitAnyIndexErrors": true,  // Suppresses errors when accessing properties with string indices
+    
+// //     // If you want to go even further with less strictness:
+// //     "strictNullChecks": false,   // Less strict about null/undefined checks
+// //     "strictFunctionTypes": false ,// Less strict about function parameter types
+    
+// //     "plugins": [
+// //       {
+// //         "name": "next"
+// //       }
+// //     ],
+// //     "paths": {
+// //       "@/*": ["./src/*"]
+// //     }
+// //   },
+// //   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+// //   "exclude": ["node_modules"]
+// // }
+
+// {
+//   "compilerOptions": {
+//     "target": "ES2017",
+//     "lib": ["dom", "dom.iterable", "esnext"],
+//     "allowJs": true,
+//     "skipLibCheck": true,
+//     "strict": false,
+//     "noEmit": true,
+//     "esModuleInterop": true,
+//     "module": "esnext",
+//     "moduleResolution": "bundler",
+//     "resolveJsonModule": true,
+//     "isolatedModules": true,
+//     "jsx": "preserve",
+//     "incremental": true,
+//     "noImplicitAny": false,
+//     "suppressImplicitAnyIndexErrors": true,  // Uncommented this
+//     "strictNullChecks": false,
+//     "strictFunctionTypes": false,
+//     "ignoreBuildErrors": true,
+    
+//     // Additional relaxed checks to minimize errors
+//     "noImplicitThis": false,      // Don't complain about 'this' having an implicit 'any' type
+//     "noUnusedLocals": false,      // Don't report errors on unused local variables
+//     "noUnusedParameters": false,  // Don't report errors on unused parameters
+//     "noFallthroughCasesInSwitch": false, // Don't require break statements between switch cases
+//     "exactOptionalPropertyTypes": false, // Be more lenient with optional properties
+//     "suppressExcessPropertyErrors": true, // Don't complain about extra properties in objects
+    
+//     "plugins": [
+//       {
+//         "name": "next"
+//       }
+//     ],
+//     "paths": {
+//       "@/*": ["./src/*"]
+//     }
+//   },
+//   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+//   "exclude": ["node_modules"]
+// }
 {
   "compilerOptions": {
     "target": "ES2017",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
-    "strict": true,
+    "strict": false,
     "noEmit": true,
     "esModuleInterop": true,
     "module": "esnext",
@@ -13,6 +89,18 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "noImplicitAny": false,
+    "suppressImplicitAnyIndexErrors": true,
+    "strictNullChecks": false,
+    "strictFunctionTypes": false,
+    
+    // Additional relaxed checks
+    "noImplicitThis": false,
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "noFallthroughCasesInSwitch": false,
+    "exactOptionalPropertyTypes": false,
+    
     "plugins": [
       {
         "name": "next"

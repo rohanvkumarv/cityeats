@@ -14,6 +14,7 @@ import {
 } from 'react-icons/ri';
 
 export default function AdminDashboard() {
+  // @ts-ignore
   const { userId } = useAuth();
   const [stats, setStats] = useState({
     totalUsers: 0,

@@ -34,7 +34,7 @@ export default function LoginPage() {
             <div className="md:w-1/2 relative hidden md:block">
               <div className="absolute inset-0 bg-blue-600 opacity-80"></div>
               <Image
-                src="/images/login-bg.jpg"
+                src="/images/restaurants/thali.jpg"
                 alt="Restaurant interior"
                 fill
                 style={{ objectFit: 'cover' }}

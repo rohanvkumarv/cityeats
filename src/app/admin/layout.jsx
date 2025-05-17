@@ -58,11 +58,7 @@ export default function AdminLayout({ children }) {
       href: '/admin/restuarants',
       icon: <RiStore2Line className="text-xl" />,
     },
-    // {
-    //   name: 'Settings',
-    //   href: '/admin/settings',
-    //   icon: <RiSettings3Line className="text-xl" />,
-    // },
+   
   ];
 
   if (isLoading) {
