@@ -3,8 +3,18 @@
 import { NextResponse } from 'next/server';
 import { cookies } from 'next/headers';
 import prisma from '@/lib/prisma';
-import fs from 'fs/promises';
-import path from 'path';
+import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
+
+// Initialize S3 client
+const s3Client = new S3Client({
+  region: process.env.AWS_REGION,
+  credentials: {
+    accessKeyId: process.env.AWS_ACCESS_KEY_ID,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY,
+  },
+});
+
+const BUCKET_NAME = process.env.AWS_S3_BUCKET;
 
 // Helper function to authenticate vendor
 async function authenticateVendor() {
@@ -82,14 +92,6 @@ export async function POST(request) {
       );
     }
     
-    // Ensure upload directory exists
-    const uploadDir = path.join(process.cwd(), 'public/images/restaurant');
-    try {
-      await fs.access(uploadDir);
-    } catch {
-      await fs.mkdir(uploadDir, { recursive: true });
-    }
-    
     const uploadedImages = [];
     const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png', 'image/gif'];
     
@@ -104,18 +106,31 @@ export async function POST(request) {
         continue;
       }
       
-      // Generate unique filename
-      const fileExtension = path.extname(file.name) || '.jpg';
-      const uniqueFilename = `${restaurant.id}_${Date.now()}_${Math.random().toString(36).substring(7)}${fileExtension}`;
-      const filePath = path.join(uploadDir, uniqueFilename);
+      // Generate unique key for S3
+      const fileExtension = file.name.split('.').pop() || 'jpg';
+      const timestamp = Date.now();
+      const random = Math.random().toString(36).substring(7);
+      const key = `restaurants/${restaurant.id}/${timestamp}-${random}.${fileExtension}`;
       
-      // Save file
+      // Upload to S3
       const arrayBuffer = await file.arrayBuffer();
       const buffer = Buffer.from(arrayBuffer);
-      await fs.writeFile(filePath, buffer);
+      
+      const uploadCommand = new PutObjectCommand({
+        Bucket: BUCKET_NAME,
+        Key: key,
+        Body: buffer,
+        ContentType: file.type,
+        // Make the uploaded images publicly readable
+        ACL: 'public-read',
+      });
+      
+      await s3Client.send(uploadCommand);
+      
+      // Construct the public URL
+      const imageUrl = `https://${BUCKET_NAME}.s3.${process.env.AWS_REGION}.amazonaws.com/${key}`;
       
       // Create database record
-      const imageUrl = `/images/restaurant/${uniqueFilename}`;
       const isMain = restaurant.images.length === 0 && uploadedImages.length === 0;
       
       const restaurantImage = await prisma.restaurantImage.create({
