@@ -203,12 +203,12 @@ export default function MyBookings() {
                   {booking.order.orderItems.map((item) => (
                     <li key={item.id} className="flex justify-between text-sm">
                       <span>{item.menuItem.name} × {item.quantity}</span>
-                      <span className="font-medium">£{(item.price * item.quantity).toFixed(2)}</span>
+                      <span className="font-medium">${(item.price * item.quantity).toFixed(2)}</span>
                     </li>
                   ))}
                   <li className="flex justify-between font-medium pt-3 border-t mt-3 text-amber-900">
                     <span>Total</span>
-                    <span>£{booking.order.totalAmount.toFixed(2)}</span>
+                    <span>${booking.order.totalAmount.toFixed(2)}</span>
                   </li>
                 </ul>
               </div>

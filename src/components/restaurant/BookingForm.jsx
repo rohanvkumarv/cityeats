@@ -356,7 +356,7 @@ export default function BookingForm({ restaurantId, tables, menuItems }) {
                   </div>
                   <div className="flex items-center">
                     <span className="font-medium text-amber-900 mr-2">
-                      £{getTotalOrderAmount().toFixed(2)}
+                      ${getTotalOrderAmount().toFixed(2)}
                     </span>
                     <RiArrowRightSLine className="text-amber-600" />
                   </div>
@@ -457,7 +457,7 @@ export default function BookingForm({ restaurantId, tables, menuItems }) {
                       </div>
                       <div className="flex items-center">
                         <span className="font-medium text-amber-900 mr-2">
-                          £{getTotalOrderAmount().toFixed(2)}
+                          ${getTotalOrderAmount().toFixed(2)}
                         </span>
                         {showOrderSummary ? (
                           <RiSubtractLine className="text-amber-600" />
@@ -519,7 +519,7 @@ export default function BookingForm({ restaurantId, tables, menuItems }) {
           ) : (
             <span className="flex items-center justify-center">
               <RiCheckboxCircleLine className="mr-2" />
-              Book Now {formData.orderItems.length > 0 && `• £${getTotalOrderAmount().toFixed(2)}`}
+              Book Now {formData.orderItems.length > 0 && `• $${getTotalOrderAmount().toFixed(2)}`}
             </span>
           )}
         </button>

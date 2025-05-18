@@ -619,7 +619,7 @@ export default function VendorBookings() {
                                 {item.quantity}
                               </td>
                               <td className="px-4 py-2 text-right text-stone-900">
-                                £{(item.price * item.quantity).toFixed(2)}
+                                ${(item.price * item.quantity).toFixed(2)}
                               </td>
                             </tr>
                           ))}
@@ -628,7 +628,7 @@ export default function VendorBookings() {
                               Total:
                             </td>
                             <td className="px-4 py-3 font-medium text-right text-amber-900">
-                              £{selectedBooking.order.totalAmount.toFixed(2)}
+                              ${selectedBooking.order.totalAmount.toFixed(2)}
                             </td>
                           </tr>
                         </tbody>
