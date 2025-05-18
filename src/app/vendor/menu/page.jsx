@@ -472,7 +472,7 @@ export default function VendorMenu() {
             </div>
             
             {/* Image Upload (placeholder) */}
-            <div className="mb-6">
+            {/* <div className="mb-6">
               <label className="block text-stone-700 font-medium mb-2">
                 Item Image (Coming Soon)
               </label>
@@ -480,7 +480,7 @@ export default function VendorMenu() {
                 <RiImageAddLine className="text-4xl mb-2 text-amber-300" />
                 <p className="text-amber-900 font-medium">Image upload functionality coming soon</p>
               </div>
-            </div>
+            </div> */}
             
             <div className="flex justify-end space-x-3 mt-6">
               <button
