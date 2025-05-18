@@ -306,10 +306,10 @@ export default function Home() {
               List Your Restaurant
             </Link>
             <Link
-              href="#features"
+              href="/auth/vendor/login"
               className="inline-block border border-white/30 backdrop-blur-sm text-white py-3 px-8 rounded-lg font-medium hover:bg-white/10 transition-all duration-300"
             >
-              Learn More
+             Login To Your Restaurant
             </Link>
           </div>
         </div>
