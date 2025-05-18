@@ -426,7 +426,7 @@ export default function RestaurantDetail({ params }) {
                   <p className="mt-2">Please inform your server of any allergies or dietary requirements before ordering.</p>
                 </div>
               </div>
-            )}
+            )}  
           </div>
           
           {/* Booking Form */}

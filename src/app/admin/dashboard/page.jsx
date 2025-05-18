@@ -149,7 +149,7 @@ export default function AdminDashboard() {
             </div>
           </div>
           <Link
-            href="/admin/restaurants"
+            href="/admin/restuarants"
             className="mt-4 text-blue-600 hover:text-blue-800 inline-flex items-center text-sm"
           >
             <span>View Restaurants</span>
@@ -168,13 +168,13 @@ export default function AdminDashboard() {
               <h3 className="text-2xl font-bold">{stats.totalBookings}</h3>
             </div>
           </div>
-          <Link
+          {/* <Link
             href="/admin/bookings"
             className="mt-4 text-blue-600 hover:text-blue-800 inline-flex items-center text-sm"
           >
             <span>View Bookings</span>
             <RiArrowRightSLine className="ml-1" />
-          </Link>
+          </Link> */}
         </div>
 
         {/* Pending Vendors */}
@@ -188,13 +188,13 @@ export default function AdminDashboard() {
               <h3 className="text-2xl font-bold">{stats.pendingVendors}</h3>
             </div>
           </div>
-          <Link
+          {/* <Link
             href="/admin/vendors?status=PENDING"
             className="mt-4 text-blue-600 hover:text-blue-800 inline-flex items-center text-sm"
           >
             <span>Review Applications</span>
             <RiArrowRightSLine className="ml-1" />
-          </Link>
+          </Link> */}
         </div>
       </div>
 
