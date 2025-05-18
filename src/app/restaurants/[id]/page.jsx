@@ -443,35 +443,7 @@ export default function RestaurantDetail({ params }) {
         </div>
       </div>
       
-      {/* Footer */}
-      <div className="bg-amber-900 text-white mt-16 py-8">
-        <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-6 md:mb-0">
-              <h3 className="font-serif text-xl mb-2">{name}</h3>
-              <p className="text-amber-200 text-sm">
-                A classic British dining experience in the heart of {city}
-              </p>
-            </div>
-            
-            <div className="flex space-x-4">
-              <Link href="#" className="text-amber-200 hover:text-white transition duration-300">
-                Privacy Policy
-              </Link>
-              <Link href="#" className="text-amber-200 hover:text-white transition duration-300">
-                Terms & Conditions
-              </Link>
-              <Link href="#" className="text-amber-200 hover:text-white transition duration-300">
-                Contact Us
-              </Link>
-            </div>
-          </div>
-          
-          <div className="border-t border-amber-800 mt-6 pt-6 text-center text-amber-300 text-sm">
-            © {new Date().getFullYear()} {name}. All rights reserved.
-          </div>
-        </div>
-      </div>
+      
     </div>
   );
 }
