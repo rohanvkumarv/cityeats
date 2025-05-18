@@ -96,7 +96,7 @@ export default function RegisterPage() {
           });
         } else {
           // For customers, they're automatically logged in via cookies
-          setUser(result.user);
+          // setUser(result.user);
           router.push('/');
         }
       } else {

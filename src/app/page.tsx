@@ -300,7 +300,7 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link
-              href="/auth/vendor/signup"
+              href="/auth/signup"
               className="inline-block bg-white text-amber-800 py-3 px-8 rounded-lg font-medium hover:bg-amber-50 transition-all duration-300 shadow-md"
             >
               List Your Restaurant

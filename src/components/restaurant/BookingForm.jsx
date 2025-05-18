@@ -405,7 +405,7 @@ export default function BookingForm({ restaurantId, tables, menuItems }) {
                             {item.description && (
                               <p className="text-sm text-stone-600 line-clamp-2">{item.description}</p>
                             )}
-                            <p className="text-amber-700 font-medium">£{item.price.toFixed(2)}</p>
+                            <p className="text-amber-700 font-medium">${item.price.toFixed(2)}</p>
                           </div>
                           
                           <div className="flex items-center">
@@ -481,7 +481,7 @@ export default function BookingForm({ restaurantId, tables, menuItems }) {
                               </div>
                               <div className="flex items-center">
                                 <span className="text-stone-900 mr-2">
-                                  £{(menuItem.price * orderItem.quantity).toFixed(2)}
+                                  ${(menuItem.price * orderItem.quantity).toFixed(2)}
                                 </span>
                                 <button
                                   type="button"

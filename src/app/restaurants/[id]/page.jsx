@@ -405,7 +405,7 @@ export default function RestaurantDetail({ params }) {
                               )}
                             </div>
                             <div className="text-amber-800 font-serif font-medium text-lg ml-4 bg-amber-50 px-3 py-1 rounded">
-                              £{item.price.toFixed(2)}
+                              ${item.price.toFixed(2)}
                             </div>
                           </div>
                         ))}

@@ -121,9 +121,19 @@ export default function LoginForm({ userType = 'CUSTOMER' }) {
         </button>
       </form>
       
-      <div className="mt-4 text-center">
+      {/* <div className="mt-4 text-center">
         <Link href="/auth/forgot-password" className="text-sm text-blue-600 hover:underline">
           Forgot your password?
+        </Link>
+      </div> */}
+      {/* <div className="mt-4 text-center">
+        <Link href="/auth/forgot-password" className="text-sm text-blue-600 hover:underline">
+          Forgot your password?
+        </Link>
+      </div> */}
+      <div className="mt-4 text-center">
+        <Link href="/auth/signup" className="text-sm text-blue-600 hover:underline">
+          Vendor Signup
         </Link>
       </div>
       
@@ -132,7 +142,7 @@ export default function LoginForm({ userType = 'CUSTOMER' }) {
           <p className="text-gray-600">
             Don&apos;t have an account?{' '}
             <Link href="/auth/signup" className="text-blue-600 hover:underline">
-              Sign up
+            Customer   Sign up
             </Link>
           </p>
         </div>
@@ -142,7 +152,7 @@ export default function LoginForm({ userType = 'CUSTOMER' }) {
         <div className="mt-4 text-center">
           <p className="text-gray-600">
             Want to list your restaurant?{' '}
-            <Link href="/auth/vendor/signup" className="text-blue-600 hover:underline">
+            <Link href="/auth/signup" className="text-blue-600 hover:underline">
               Register here
             </Link>
           </p>
